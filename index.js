@@ -2,8 +2,10 @@
 
 const newDogButton = document.getElementById('new-dog-button')
 const favDogButton = document.getElementById('add-to-favorites-button')
+favDogButton.addEventListener('click', saveDogToFavs)
+newDogButton.addEventListener('click', fetchRandomDog)
 
-
+function fetchRandomDog() {
 fetch('https://dog.ceo/api/breeds/image/random')
 .then(response => response.json())
 .then(randomDog =>  {
@@ -12,9 +14,12 @@ fetch('https://dog.ceo/api/breeds/image/random')
 .catch(error => {
     console.log(error)
 })
+}
+
+fetchRandomDog()
 
 function renderDog(randomDog) {
-    console.log(randomDog)
+    //console.log(randomDog)
     const div = document.getElementById('random-dog-image')
     div.innerHTML = '';
     const span = document.createElement('span')
@@ -23,18 +28,17 @@ function renderDog(randomDog) {
     dogImage.src = randomDog.message
     div.appendChild(span)
     span.appendChild(dogImage)
-    console.log(randomDog.message)
-    favDogButton.addEventListener('click', () => saveDogToFavs(randomDog))
 
 }
 
-newDogButton.addEventListener('click', getNewDog);//runs the function of creating a new dog again
+//newDogButton.addEventListener('click', getNewDog);//runs the function of creating a new dog again
 
 
 function getNewDog() {
     fetch('https://dog.ceo/api/breeds/image/random')
     .then(response => response.json())
     .then(randomDog =>  {
+        console.log(randomDog)
         renderDog(randomDog)
 })
     .catch(error => {
@@ -46,16 +50,17 @@ function getNewDog() {
 //once new dog buttin is clicked run rendordog function again to change the dog
 //newDogButton.addEventListener('click', () => renderDog(randomDog));//runs teh function of creating a new dog again
 
-function saveDogToFavs(randomDog) {
-    //console.log(randomDog)
+function saveDogToFavs() {
+    console.log('fav clicked')
+    const favDog = document.querySelector("#random-dog-image > span > img") //selecting the image on the page
     const div = document.getElementById('my-fav-dogs')
     const deleteButton = document.createElement('button')
     const dogImage = document.createElement('img');
-    const span = document.createElement('span');
-    dogImage.src = randomDog.message;
+    const span = document.createElement('div');
+    dogImage.src = favDog.src; //this gets teh specific image source of the current image
     div.appendChild(span);
     span.appendChild(dogImage);
-    span.appendChild.deleteButton
+    span.appendChild(deleteButton)
     deleteButton.innerText = 'Delete'
     //delete button
     //get the image
