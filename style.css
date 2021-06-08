@@ -1,7 +1,8 @@
 body {
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 800px;
     background-repeat: no-repeat;
+    background-color: aquamarine;
 }
 
 #random-dog-image {
@@ -12,10 +13,10 @@ body {
     text-align: center;
     margin: 0 auto;
     padding: 20px;
-    border-bottom-left-radius:5% 3%;
-    border-bottom-right-radius:5% 3%;
-    border-top-right-radius:5% 3%;
-    border-top-left-radius:5% 3%;
+    border-radius:8px;
+    font-size:20px;
+	font-weight:bold;
+    color: #ffffff;
 }
 
 #new-dog-fav-dog-buttons-div {
@@ -64,8 +65,11 @@ img {
     text-align: center;
     margin: 0 auto;
     padding: 20px;
-    border-bottom-left-radius:5% 3%;
-    border-bottom-right-radius:5% 3%;
-    border-top-right-radius:5% 3%;
-    border-top-left-radius:5% 3%;
+    border-radius:8px;
+}
+
+h1 {
+    font-size:20px;
+	font-weight:bold;
+    color: #ffffff;
 }

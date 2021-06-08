@@ -18,17 +18,36 @@ fetch('https://dog.ceo/api/breeds/image/random')
 
 fetchRandomDog()
 
+// function renderDog(randomDog) { //this adds a random dog to div random dog image
+//     const div = document.getElementById('random-dog-image')
+//     div.innerHTML = '';
+//     const span = document.createElement('span')
+//     const dogImage = document.createElement('img')
+//     dogImage.src = randomDog.message
+//     div.appendChild(span)
+//     span.appendChild(dogImage)
+
+// }
+
+
 function renderDog(randomDog) { //this adds a random dog to div random dog image
     const div = document.getElementById('random-dog-image')
     div.innerHTML = '';
-    const span = document.createElement('span')
+    const divTwo = document.createElement('div')
     const dogImage = document.createElement('img')
+    const dogBreedDiv = document.createElement('div')
     dogImage.src = randomDog.message
-    div.appendChild(span)
-    span.appendChild(dogImage)
+    div.appendChild(divTwo)
+    divTwo.appendChild(dogImage)
+    divTwo.appendChild(dogBreedDiv)
+    //get breed name
+    const dogUrl = randomDog.message
+    const dogUrlSliceOne = dogUrl.slice(30)
+    const dogUrlSplit = dogUrlSliceOne.split('/')
+    const dogBreedName = dogUrlSplit.slice(0,1)
+    dogBreedDiv.innerText = `Dog Breed: ${dogBreedName}`
 
 }
-
 
 
 
@@ -63,10 +82,7 @@ function saveDogToFavs() { //this adds the new dog to the save fave dogs div
     deleteButton.addEventListener('click', () => deleteFavPic(favDog))
 }
 
-function deleteFavPic(favDog) {
-    console.log(favDog.src)
-    //const div = document.getElementById(favDog.src)
-    //div.innerHTML = '';
+function deleteFavPic(favDog) { //delete fav dog
     const div = document.getElementById(favDog.src)
     div.remove();
 }
