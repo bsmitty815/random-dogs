@@ -54,10 +54,21 @@ function saveDogToFavs() { //this adds the new dog to the save fave dogs div
     const buttonDiv = document.createElement('div');
     dogImage.src = favDog.src; //this gets teh specific image source of the current image
     div.appendChild(imageDiv);
+    imageDiv.id = dogImage.src
+    deleteButton.id = dogImage.src
     imageDiv.appendChild(dogImage);
     imageDiv.appendChild(buttonDiv)
     buttonDiv.appendChild(deleteButton)
     deleteButton.innerText = 'Delete'
+    //document.querySelector(`#[objectHTMLDivElement] > div > button`).addEventListener('click', deleteFavPic())
+    //document.querySelector('deleteButton').addEventListener('click', deleteFavPic())
+    //document.querySelector(`#my-fav-dogs > #${dogImage.src} > div > button`).addEventListener('click', deleteFavPic())
+    //document.querySelector(`#${imageDiv.id} > div > button`).addEventListener('click', deleteFavPic)
+    deleteButton.addEventListener('click', () => deleteFavPic(favDog))
+}
 
-    
+function deleteFavPic(favDog) {
+    console.log(favDog.src)
+    const div = document.getElementById(favDog.src)
+    div.innerHTML = '';
 }
