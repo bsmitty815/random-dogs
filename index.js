@@ -40,13 +40,12 @@ function renderDog(randomDog) { //this adds a random dog to div random dog image
     div.appendChild(divTwo)
     divTwo.appendChild(dogImage)
     divTwo.appendChild(dogBreedDiv)
-    //get breed name
+    //get breed name through below method
     const dogUrl = randomDog.message
     const dogUrlSliceOne = dogUrl.slice(30)
     const dogUrlSplit = dogUrlSliceOne.split('/')
     const dogBreedName = dogUrlSplit.slice(0,1)
     dogBreedDiv.innerText = `Dog Breed: ${dogBreedName}`
-
 }
 
 
@@ -65,13 +64,14 @@ function getNewDog() { //this fetches the new dog once new dog button is clicked
 
 function saveDogToFavs() { //this adds the new dog to the save fave dogs div
     console.log('fav clicked')
-    const favDog = document.querySelector("#random-dog-image > span > img") //selecting the image on the page
+    const favDog = document.querySelector("#random-dog-image > div > img")    //selecting the image on the page
     const div = document.getElementById('my-fav-dogs')
     const deleteButton = document.createElement('button')
     const dogImage = document.createElement('img');
     const imageDiv = document.createElement('div');
     const buttonDiv = document.createElement('div');
-    dogImage.src = favDog.src; //this gets teh specific image source of the current image
+    console.log(favDog.src)
+    dogImage.src = favDog.src; //this gets the specific image source of the current image
     div.appendChild(imageDiv);
     imageDiv.id = dogImage.src //gives the div the same id
     deleteButton.id = dogImage.src //give the div the same id
