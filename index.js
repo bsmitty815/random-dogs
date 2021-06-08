@@ -65,6 +65,8 @@ function saveDogToFavs() { //this adds the new dog to the save fave dogs div
 
 function deleteFavPic(favDog) {
     console.log(favDog.src)
+    //const div = document.getElementById(favDog.src)
+    //div.innerHTML = '';
     const div = document.getElementById(favDog.src)
-    div.innerHTML = '';
+    div.remove();
 }
