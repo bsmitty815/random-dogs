@@ -1,9 +1,11 @@
-// api - https://dog.ceo/api/breeds/image/random Fetch!
 
 const newDogButton = document.getElementById('new-dog-button')
 const favDogButton = document.getElementById('add-to-favorites-button')
 favDogButton.addEventListener('click', saveDogToFavs)
 newDogButton.addEventListener('click', fetchRandomDog)
+const breedDropDown = document.getElementById('myDropDown');
+const searchBreedButton = document.getElementById('search-breed-button')
+searchBreedButton.addEventListener('click', searchBreed)
 
 function fetchRandomDog() {
 fetch('https://dog.ceo/api/breeds/image/random')
@@ -17,18 +19,6 @@ fetch('https://dog.ceo/api/breeds/image/random')
 }
 
 fetchRandomDog()
-
-// function renderDog(randomDog) { //this adds a random dog to div random dog image
-//     const div = document.getElementById('random-dog-image')
-//     div.innerHTML = '';
-//     const span = document.createElement('span')
-//     const dogImage = document.createElement('img')
-//     dogImage.src = randomDog.message
-//     div.appendChild(span)
-//     span.appendChild(dogImage)
-
-// }
-
 
 function renderDog(randomDog) { //this adds a random dog to div random dog image
     const div = document.getElementById('random-dog-image')
@@ -48,7 +38,41 @@ function renderDog(randomDog) { //this adds a random dog to div random dog image
     dogBreedDiv.innerText = `Dog Breed: ${dogBreedName}`
 }
 
+function fetchDogForDropDown() { //fetch the list of full breeds
+    fetch('https://dog.ceo/api/breeds/list/all')
+    .then(response => response.json())
+    .then(dogBreeds =>  {
+        renderDogForDropDown(Object.keys(dogBreeds.message))
+    })
+    .catch(error => {
+        console.log(error)
+    })
+}
 
+fetchDogForDropDown()
+
+function renderDogForDropDown(dogBreed) { //lop through all the breeds and add them to drop down
+
+    for (let i = 0; i < dogBreed.length; i++) { //creates a value and a text for the drop down options
+        const option = document.createElement('option')
+        option.value = dogBreed[i];
+        option.text = dogBreed[i];
+        breedDropDown.appendChild(option);
+    }
+}
+  
+function searchBreed() { //fetch by breed and send to renderDog so it can be added to the html
+    let breedSelected = breedDropDown.value
+    console.log(breedSelected)
+    fetch(`https://dog.ceo/api/breed/${breedSelected}/images/random`)
+    .then(response => response.json())
+    .then(breeds =>  {
+        renderDog(breeds)
+    })
+    .catch(error => {
+        console.log(error)
+    }) 
+}
 
 function getNewDog() { //this fetches the new dog once new dog button is clicked
     fetch('https://dog.ceo/api/breeds/image/random')
@@ -63,14 +87,12 @@ function getNewDog() { //this fetches the new dog once new dog button is clicked
 }
 
 function saveDogToFavs() { //this adds the new dog to the save fave dogs div
-    console.log('fav clicked')
     const favDog = document.querySelector("#random-dog-image > div > img")    //selecting the image on the page
     const div = document.getElementById('my-fav-dogs')
     const deleteButton = document.createElement('button')
     const dogImage = document.createElement('img');
     const imageDiv = document.createElement('div');
     const buttonDiv = document.createElement('div');
-    console.log(favDog.src)
     dogImage.src = favDog.src; //this gets the specific image source of the current image
     div.appendChild(imageDiv);
     imageDiv.id = dogImage.src //gives the div the same id

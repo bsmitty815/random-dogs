@@ -19,13 +19,20 @@ body {
     color: #ffffff;
 }
 
+#myDropDown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
 #new-dog-fav-dog-buttons-div {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin: 0 auto;
-    padding:13px 200px;
+    padding:13px 100px;
 }
 
 button {
