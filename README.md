@@ -1,5 +1,3 @@
-# random-dogs
-
 # Random Dogs
 
 You can view this application live [HERE](https://bsmitty815.github.io/random-dogs/)
