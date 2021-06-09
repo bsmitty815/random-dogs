@@ -1,6 +1,6 @@
 # Random Dogs
 
-![image](readme-image.PNG "Optional Title")
+![image](readme-image.png "Optional Title")
 
 You can view this application live [HERE](https://bsmitty815.github.io/random-dogs/)
 
