@@ -7,7 +7,7 @@ const breedDropDown = document.getElementById('myDropDown');
 const searchBreedButton = document.getElementById('search-breed-button')
 searchBreedButton.addEventListener('click', searchBreed)
 
-    function fetchRandomDog() {
+    function fetchRandomDog() { //fetches random dog to start
     fetch('https://dog.ceo/api/breeds/image/random')
     .then(response => response.json())
     .then(randomDog =>  {
@@ -38,7 +38,7 @@ fetchRandomDog()
         dogBreedDiv.innerText = `Dog Breed: ${dogBreedName}`
     }
 
-    function fetchDogForDropDown() { //fetch the list of full breeds
+    function fetchDogForDropDown() { //fetch the list of full breeds to start
         fetch('https://dog.ceo/api/breeds/list/all')
         .then(response => response.json())
         .then(dogBreeds =>  {
@@ -51,7 +51,7 @@ fetchRandomDog()
 
 fetchDogForDropDown()
 
-    function renderDogForDropDown(dogBreed) { //lop through all the breeds and add them to drop down
+    function renderDogForDropDown(dogBreed) { //loop through all the breeds and add them to drop down
 
         for (let i = 0; i < dogBreed.length; i++) { //creates a value and a text for the drop down options
             const option = document.createElement('option')
@@ -63,7 +63,6 @@ fetchDogForDropDown()
   
     function searchBreed() { //fetch by breed and send to renderDog so it can be added to the html
         let breedSelected = breedDropDown.value
-        console.log(breedSelected)
         fetch(`https://dog.ceo/api/breed/${breedSelected}/images/random`)
         .then(response => response.json())
         .then(breeds =>  {

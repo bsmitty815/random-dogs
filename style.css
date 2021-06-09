@@ -8,6 +8,7 @@ body {
 #random-dog-image {
     display: flex;
     width: 600px;
+    height: 500px;
     justify-content: space-around;
     background-color: rgb(0, 217, 255);
     text-align: center;
@@ -63,6 +64,7 @@ button:active {
 
 img {
     max-width: 580px;
+    max-height: 480px;
 }
 
 #my-fav-dogs {
