@@ -4,7 +4,17 @@ body {
     background-repeat: no-repeat;
     background-color: aquamarine;
 }
-
+#page-title {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin: 0 auto;
+    width: 600px;
+    padding: 20px;
+    font-size:30px;
+	font-weight:bold;
+    color: rgb(0, 217, 255);
+ }
 #random-dog-image {
     display: flex;
     width: 600px;
